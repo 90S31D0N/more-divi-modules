@@ -1,4 +1,4 @@
-.mdm-contact-chip{
+.mdm-contact-chip-module{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,13 +8,17 @@
     background-color: #d1d1d1;
 }
 
-.mdm-contact-chip h1 {
-    font-size: 1.5rem;
-    padding: 15px 25px 5px 10px;
+.mdm-contact-chip-module p {
+    padding: 0px 25px 0px 10px;
 }
 
-.mdm-contact-chip img {
+.mdm-contact-chip-module img {
     width: 50px;
     aspect-ratio: 1/1;
     border-radius: 50px;
+}
+
+.mdm-contact-chip-module a {
+    text-decoration: none;
+    color: #000000;
 }

@@ -25,11 +25,19 @@ class ContactChipModule extends ET_Builder_Module
 
         return array(
             'post_select' => [
-                'label' => esc_html__('Select Person', 'mdm-contact-chip-module'),
+                'label' => esc_html__('Select Post', 'mdm-contact-chip-module'),
                 'type' => 'select',
                 'options' => $this->get_custom_post_options(),
-                'description' => esc_html__('Select a Person', 'mdm-contact-chip-module'),
+                'description' => esc_html__('Select a Post', 'mdm-contact-chip-module'),
                 'toggle_slug' => 'main_content',
+            ],
+            'post_type' => [
+                'label'=> esc_html__('Post Type', 'mdm-contact-chip-module'),
+                'type'=> 'hidden',
+                'default'=> get_option('mdm_contact_chip_post_type', 'person'),
+                'description'=> esc_html__('Post Type', 'mdm-contact-chip-module'),
+                'toggle_slug' => 'main_content'
+
             ]
         );
     }
@@ -43,15 +51,20 @@ class ContactChipModule extends ET_Builder_Module
         // Get the featured image URL
         $post_thumbnail_url = get_the_post_thumbnail_url($post_id, 'full'); // 'full' can be changed to 'thumbnail', 'medium', 'large', etc.
 
+        $post_url = get_permalink($post_id);
+
         $id = sprintf(
             '
-            <div class="mdm-contact-chip">
+            <a href="%3$s" style="text-decoreation: none; color: #000000;">
+            <div class="mdm-contact-chip-module">
                 <img src="%2$s" alt="%1$s"></img>
-                <h1>%1$s</h1>
+                <p>%1$s</p>
             </div>
+            </a>
             ',
             esc_html__($post_title),
-            esc_url($post_thumbnail_url)
+            esc_url($post_thumbnail_url),
+            esc_url($post_url)
         );
 
         $module = $id;
