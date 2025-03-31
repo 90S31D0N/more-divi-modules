@@ -37,3 +37,6 @@ function mdm_initialize_extension() {
 }
 add_action( 'divi_extensions_init', 'mdm_initialize_extension' );
 endif;
+
+// Add the settings page to the WordPress admin menu
+require_once plugin_dir_path( __FILE__ ) .'includes/settings.php';
